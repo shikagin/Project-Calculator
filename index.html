@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
     <title>calculator</title>
 </head>
 <header><h1>calculator</h1></header>
@@ -13,11 +14,12 @@
     <div class="calculator">
         <div class="screen"></div>
         <div class="buttons">
+            
 
-            <button class="signs">AC</button>
-            <button class="signs">+/-</button>
-            <button class="signs">%</button>
-            <button class="operation">/</button>
+            <button id="signs" class="clear">AC</button>
+            <button id="signs" class="signe">+/-</button>
+            <button id="signs" class="operation">%</button>
+            <button id="signs" class="operation">/</button>
             
             <button class="numbers">7</button>
             <button class="numbers">8</button>
@@ -27,22 +29,17 @@
             <button class="numbers">4</button>
             <button class="numbers">5</button>
             <button class="numbers">6</button>
-            <button class="operation">-</button>
+            <button  class="operation">-</button>
             
             <button class="numbers">1</button>
             <button class="numbers">2</button>
             <button class="numbers">3</button>
             <button class="operation">+</button>
-            
-                   
-
-                            
-
         </div>
         <div class="extras">
-            <button id="zero">0</button>
-            <button> . </button>
-            <button id="equal">=</button>
+            <button class="numbers">0</button>
+            <button class="numbers">.</button>
+            <button class="equals">=</button>
         </div>
     </div>
 </body>

@@ -58,7 +58,7 @@ button {
     align-items: center;
 }
 
-.buttons .signs {
+.buttons #signs {
     background-color: #0D7C66;
     margin-left: 20px;
     border: none;
@@ -70,7 +70,7 @@ button {
 
 }
 
-.buttons .signs:active {
+.buttons #signs:active {
     background-color: #3ce3c2;
 }
 
