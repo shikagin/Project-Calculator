@@ -7,6 +7,9 @@ const operators = document.querySelectorAll(".operation");
 const equals = document.querySelector(".equals");
 const clear = document.querySelector(".clear");
 const signe = document.querySelector(".signe");
+
+const scree = document.querySelector(".screen");
+
 function add(firstNum, secondNum) { return firstNum + secondNum; }
 function sub(firstNum, secondNum) { return firstNum - secondNum; }
 function mul(firstNum, secondNum) { return firstNum * secondNum; }
@@ -40,7 +43,14 @@ function operate(firstNum, secondNum, operator) {
 
 numbers.forEach(function (button) {
     button.addEventListener("click", function () {
+        if(text===""){scree.innerHTML="";}
         text += `${button.textContent}`;
+        const display = document.createElement("h1");
+       display.classList.add("display");
+        display.textContent = button.textContent;
+        scree.appendChild(display);
+        
+
 
 
     });
@@ -52,6 +62,8 @@ operators.forEach(function (button) {
         operator = button.textContent;
 
         console.log(operator);
+
+        scree.innerHTML="";
 
         opernum++;
 
@@ -71,17 +83,22 @@ operators.forEach(function (button) {
 equals.addEventListener("click", function () {
 
     opernum++;
-
-    if ((opernum === 2||opernum===0||opernum===1) && text === "") {
+    scree.innerHTML="";
+    const display = document.createElement("h1");
+    display.classList.add("display");
+     
+    
+    if ((opernum === 2||opernum===0||opernum===1) && text === "" ||opernum>2) {
 
         console.log("Error");
-        opernum = 0;
+        display.textContent = "ERROR";
+        
 
     } else if (opernum === 1) {
 
         console.log(text);
-        opernum = 0;
-        text = "";
+        display.textContent = text;
+        
 
     } else if (opernum === 2) {
 
@@ -94,24 +111,32 @@ equals.addEventListener("click", function () {
         result = operate(firstNum, secondNum, operator)
 
         console.log(` ${result}`);
-
-        text = "";
-        opernum = 0;
+        display.textContent = `${result}`;
+        
 
     }
+    text = "";
+        opernum = 0;
 
-
+    scree.appendChild(display);
 
 })
 
 clear.addEventListener("click",function(){
     text ="";
     opernum=0;
+    scree.innerHTML="";
 
 })
 
 signe.addEventListener("click",function(){
 
     text += "-";
+
+    if(text===""){scree.innerHTML="";}
+        const display = document.createElement("h1");
+       display.classList.add("display");
+       display.textContent = "-";
+        scree.appendChild(display);
 
 })

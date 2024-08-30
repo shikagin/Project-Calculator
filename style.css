@@ -1,7 +1,10 @@
 * {
     margin: 0;
 }
-
+html{
+    height: 100%;
+  
+}
 header {
     display: flex;
     flex-direction: column;
@@ -11,8 +14,7 @@ header {
     background-color: #437452;
     color: #d4f2dd;
 }
-
-body {
+.body {
     background-color: #BDE8CA;
 }
 
@@ -40,13 +42,22 @@ button {
 }
 
 .screen {
+    display: flex;
+    align-items: center;
     background-color: #dee4e3;
     border-radius: 10px;
     box-shadow: inset 10px 10px 20px #39504b38;
-    margin: 50px 20px 20px 20px;
-    padding: 30px 110px 30px 100px;
+    margin: 50px 29px 20px 20px;
+    padding: 30px 10px 30px 10px;
+    overflow:hidden; 
+    max-height: 0px;
+    
 }
-
+.screen h1 {
+    
+    font-size: 30px;
+    
+}
 
 .buttons {
     display: grid;
