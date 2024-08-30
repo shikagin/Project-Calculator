@@ -43,10 +43,10 @@ function operate(firstNum, secondNum, operator) {
 
 numbers.forEach(function (button) {
     button.addEventListener("click", function () {
-        if(text===""){scree.innerHTML="";}
+        if(text===""){result=0; scree.innerHTML="";}
         text += `${button.textContent}`;
         const display = document.createElement("h1");
-       display.classList.add("display");
+        display.classList.add("display");
         display.textContent = button.textContent;
         scree.appendChild(display);
         
@@ -58,24 +58,41 @@ numbers.forEach(function (button) {
 
 operators.forEach(function (button) {
     button.addEventListener("click", function () {
+        scree.innerHTML="";
+
+        opernum++;
+
+        if (opernum === 1&& result===0) {
+
+            firstNum = parseFloat(text);
+            
+            console.log(`${firstNum}`);
+
+            text = "";
+
+        }else if (opernum===1 && result!=0){
+
+            firstNum= result;
+        }
+         else if(opernum>1)
+
+        {
+            secondNum=parseFloat(text);
+
+            firstNum = operate(firstNum,secondNum,operator);
+            const display=displaY();
+
+            display.textContent=`${firstNum}`;
+            scree.appendChild(display);
+
+            text = "";
+        }
 
         operator = button.textContent;
 
         console.log(operator);
 
-        scree.innerHTML="";
-
-        opernum++;
-
-        if (opernum === 1) {
-
-            firstNum = parseFloat(text);
-
-            console.log(`${firstNum}`);
-
-            text = "";
-
-        }
+        
 
     });
 });
@@ -83,40 +100,42 @@ operators.forEach(function (button) {
 equals.addEventListener("click", function () {
 
     opernum++;
-    scree.innerHTML="";
-    const display = document.createElement("h1");
-    display.classList.add("display");
-     
     
-    if ((opernum === 2||opernum===0||opernum===1) && text === "" ||opernum>2) {
+    const display = displaY();
+    
+    if ((opernum === 2||opernum===0||opernum===1) && text === "" ) {
 
         console.log("Error");
         display.textContent = "ERROR";
+        text = "";
+        opernum = 0;
         
 
     } else if (opernum === 1) {
 
         console.log(text);
         display.textContent = text;
+        text = "";
+        opernum = 0;
         
 
-    } else if (opernum === 2) {
+    } else if (opernum >= 2) {
 
         secondNum = parseFloat(text);
 
         console.log(`${secondNum}`);
 
-
-
         result = operate(firstNum, secondNum, operator)
 
         console.log(` ${result}`);
-        display.textContent = `${result}`;
-        
 
-    }
-    text = "";
+        display.textContent = `${result}`;
+
+        text = "";
         opernum = 0;
+        
+    }
+    
 
     scree.appendChild(display);
 
@@ -127,7 +146,7 @@ clear.addEventListener("click",function(){
     opernum=0;
     scree.innerHTML="";
 
-})
+});
 
 signe.addEventListener("click",function(){
 
@@ -139,4 +158,11 @@ signe.addEventListener("click",function(){
        display.textContent = "-";
         scree.appendChild(display);
 
-})
+});
+
+function displaY(){
+    scree.innerHTML="";
+    const display = document.createElement("h1");
+    display.classList.add("display");
+    return display;
+}
